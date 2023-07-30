@@ -1,0 +1,28 @@
+* {
+    background-color: rgb(28, 28, 28);
+    color: white;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+}
+
+button {
+    width: 100px;
+}
+
+.content {
+    display: flex;
+    gap: 69px;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* figure out how to match the box later */
+    align-items: center;
+}
