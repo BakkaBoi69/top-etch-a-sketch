@@ -74,7 +74,7 @@ function mouseEnterGrid(e) {
             if (drawMode == 'color') {
                 e.target.style.backgroundColor = color;
             } else if (drawMode == 'erase') {
-                e.target.style.backgroundColor = 'rgb(28, 28, 28)';
+                e.target.style.backgroundColor = document.backgroundColor;
             } else if (drawMode == 'random') {
                 e.target.style.backgroundColor = '#'+Math.floor(Math.random()*0xffffff).toString(16);
             }

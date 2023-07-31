@@ -10,6 +10,14 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 50px;
+    background-color: #e5e5f7;
+    opacity: 0.8;
+    background-image: radial-gradient(circle at center center, #000000, #e5e5f7), repeating-radial-gradient(circle at center center, #000000, #000000, 7px, transparent 14px, transparent 7px);
+    background-blend-mode: multiply;
+    background-size: cover; /* ensures image covers entire body */
+    background-attachment: fixed; /* makes the background image fixed, so it doesn't move with the content */
+    height: 100vh; /* ensures the body takes the full viewport height */
+    margin: 0; /* removes any margin */
 }
 
 button {
@@ -19,17 +27,20 @@ button {
 .content {
     display: flex;
     gap: 69px;
+    background: none;
 }
 
 .options {
     display: flex;
     flex-direction: column;
-    gap: 30px; /* figure out how to match the box later */
+    /* gap: 30px; figure out how to match the box later */
+    justify-content: space-around;
+    background: none;
     align-items: center;
 }
 
 .grid-wrapper {
-    box-shadow: rgba(255, 255, 255, 0.35) 0px 5px 15px;
+    box-shadow: rgba(255, 255, 255, 0.589) 0px 5px 15px;
     display: grid;
     width: 500px;
     height: 500px;
