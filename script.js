@@ -11,11 +11,21 @@ let mouseUp = true; // Left-click is not pressed
 let drawMode = 'color'; // different drawing modes
 let color = colorWheel.value; // Currently selected color from color wheel
 let gridCells = 16; // Number of grid cells to divide the grid into
+// Tracks the previous cell, prevents colours being drawn to the same cell
+// multiple times if cell size is large
+let prevCell = 0;  // I can initlize to 0 which signifies no prev cell
+
 
 // Set event listeners for all different modes of drawing
-colorButton.addEventListener('click', () => drawMode = 'color');
-randomButton.addEventListener('click', () => drawMode = 'random');
-eraser.addEventListener('click', () => drawMode = 'erase');
+colorButton.addEventListener('click', () => changeColor('color'));
+randomButton.addEventListener('click', () => changeColor('random'));
+eraser.addEventListener('click', () => changeColor('erase'));
+
+// Changes drawing mode and resets prevCell so that square can be selected again
+function changeColor(newMode) {
+    drawMode = newMode;
+    prevCell = 0;
+}
 
 // Event listener for the slider to change grid size
 gridSlider.addEventListener('input', () => {
@@ -60,12 +70,16 @@ function handleMouseDown() {
 // the grid from outside and it should still color
 function mouseEnterGrid(e) {
     if (mouseDown) {
-        if (e.target.classList.contains('grid-cell')) {
+        if (e.target.classList.contains('grid-cell') && e.target != prevCell) {
             if (drawMode == 'color') {
                 e.target.style.backgroundColor = color;
             } else if (drawMode == 'erase') {
                 e.target.style.backgroundColor = 'rgb(28, 28, 28)';
+            } else if (drawMode == 'random') {
+                e.target.style.backgroundColor = '#'+Math.floor(Math.random()*0xffffff).toString(16);
             }
+
+            prevCell = e.target;
         } 
     }
 }
