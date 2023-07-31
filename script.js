@@ -74,7 +74,7 @@ function mouseEnterGrid(e) {
             if (drawMode == 'color') {
                 e.target.style.backgroundColor = color;
             } else if (drawMode == 'erase') {
-                e.target.style.backgroundColor = document.backgroundColor;
+                e.target.style.backgroundColor = '';
             } else if (drawMode == 'random') {
                 e.target.style.backgroundColor = '#'+Math.floor(Math.random()*0xffffff).toString(16);
             }
@@ -109,5 +109,10 @@ function clearGrid() {
         cell.style.backgroundColor = '';
     });
 }
+
+// Prevents dragging on the whole document
+document.addEventListener('dragstart', function (event) {
+    event.preventDefault();
+});
 
 createGrid();
